@@ -1,0 +1,39 @@
+Launch
+------
+lein deploy-storm --start --name herc-strm-1 --branch master --commit 0.9.0-rc3
+
+Attach
+------
+lein deploy-storm --attach --name herc-strm-1
+
+This should also set up your ~/.storm/storm.yaml for this machine
+to act as a client, or gateway machine for submitting topologies.
+
+Get IPs
+-------
+lein deploy-storm --ips --name herc-strm-1
+
+INFO  provision - TAG:     zookeeper-herc-strm-1
+INFO  provision - PUBLIC:  54.242.196.155
+INFO  provision - PRIVATE: 10.138.51.165
+INFO  provision - TAG:     nimbus-herc-strm-1
+INFO  provision - PUBLIC:  54.211.196.35
+INFO  provision - PRIVATE: 10.71.135.108
+INFO  provision - TAG:     supervisor-herc-strm-1
+INFO  provision - PUBLIC:  54.226.221.3, 184.72.85.243
+INFO  provision - PRIVATE: 10.9.128.168, 10.71.131.122
+
+Ganglia
+-------
+http://50.17.124.238/ganglia/index.php   (use Nimbus IP)
+
+Storm UI
+--------
+http://50.17.124.238:8080/ (use Nimbus IP)
+
+Look for Thrift port (used for submitting topologies)
+nimbus.thrift.port	6627
+
+Stop
+----
+lein deploy-storm --stop --name herc-strm-1
